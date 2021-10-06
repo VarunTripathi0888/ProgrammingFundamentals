@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace recursionDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] str = new string[] { "zero","one", "two", "three", "four", "five" };
+            // The code provided will print ‘Hello World’ to the console.
+            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
+            Console.WriteLine("Hello World!");
+            PrintConsecutiveNumbersAscending(5);// should print 1,2,3,4,5
+            PrintConsecutiveNumbersDescending(5);// should Print 5,4,3,2,1
+            PrintFibonacchiSeries(9); // should print 9th term in Fibonacchi series
+            PrintSpellings(5432, str); // Should print five nine six
+        }
+
+        public static void PrintConsecutiveNumbersAscending(int n)
+        {
+            if (n <= 0)
+            {
+                return;
+            }
+            PrintConsecutiveNumbersAscending(n - 1);
+            Console.WriteLine(n);
+        }
+
+        public static void PrintConsecutiveNumbersDescending(int n)
+        {
+            if (n <= 0)
+            {
+                return;
+            }
+            Console.WriteLine(n);
+            PrintConsecutiveNumbersDescending(n - 1);
+        }
+
+        public static int PrintFibonacchiSeries(int n)
+        {
+            if (n <= 0)
+            {
+                return 0;
+            }
+
+            if (n == 1)
+            {
+                return 1;
+            }
+
+            int z = PrintFibonacchiSeries(n - 1) + PrintFibonacchiSeries(n - 2);
+            return z;
+          
+        }
+
+        public static void PrintSpellings(int n, string[] str)
+        {
+            if (n <= 0)
+            {
+                return;
+            }
+            PrintSpellings(n / 10, str);
+            int i = n % 10;
+            Console.WriteLine(str[i]);
+
+        }
+    }
+}
